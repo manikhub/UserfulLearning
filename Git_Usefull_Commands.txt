@@ -1,0 +1,46 @@
+mkdir projectname
+init git
+touch readme.txt
+nano readme.txt
+	Write something and save file in nano
+git status
+cat readme.txt //to read content of file
+git add . //stage all the files
+git add readme.txt //stage the specified file
+git rm --cached readme.txt //to unstage the specified file
+git commit -m "Initial Commit"
+git remote add origin https://github.com/manikhub/demo.git
+git push origin master
+git clone https://github.com/manikhub/demo.git // To clone remote repository in local folder
+git pull  https://github.com/manikhub/demo.git
+git commit -a -m "commit message" //commit all without staging
+git commit -m "commit message" path/to/file1 path/to/file2 //commit specific files without staging
+git branch // show all the branches
+git branch feature-1 //create new branch
+git checkout feature-1 //switch to new branch
+git branch -d feature-1 // delete branch
+git branch -m feature-B //rename current branch to feature-B
+git merge feature-1 // merge feature-1 into current branch
+in case of merge conflict --- follow these steps
+go to feature branch and merge master into it
+git merge master //This is going to fail due to merge conflict
+git mergetool -t vimdiff //use this command to see the differences and do manual merge
+git add . //add changes to staging
+git commit -m "Merged master into feature branch"
+git checkot master
+git merge feature-B
+git add .
+git commit -m "merged feature b"
+git push origin master
+git rebase feature-1
+git cherry-pick <commit-hash>
+git revert 74fdd6966dae7ffa8817c226eba4b3fea1995822 5cad65d3d7c0e3871fbd9a49eadb11fba5fc37ea
+git reset --soft Head~10 //It will reset back to 10th commit from head, will not change content in working directory and staging area
+git reset --medium Head~10 // DEFAULT - It will reset back to 10th commit from head, will not change content in working directory but undo the staging area
+git reset --hard Head~10 //It will reset back to 10th commit from head, will udno all changes in working directory and staging area
+
+There are two git workflows:-
+
+Feature Based Development (FBD):- Having different branches for production, development, qa and feature branches. Useful for large teams and formal code reviews. 
+
+Trunk Based Development (TBD):- Only master branch, expert small teams use this, you need to be sure about the changes you are going to push to master branch and automatic testing and ci/cd safeguard the codebase. It is quick and no feature branches 
